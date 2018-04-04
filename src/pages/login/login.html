@@ -1,0 +1,25 @@
+
+
+<ion-content padding fullscreen class="bg">
+
+  <img src="./assets/imgs/logoinverse.png" alt="" width="150" id="logo">
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button full (click)="login(email,password)">Login</button>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button clear full>Dont have an account? Register </button>
+    </ion-item>
+  
+  </ion-list>
+</ion-content>
