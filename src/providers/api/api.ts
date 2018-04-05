@@ -23,7 +23,7 @@ export class ApiProvider {
   getStorage(){
     return new Promise((res,rej) => {
       this.storage.get('user').then((val) => {
-        
+
         res(JSON.parse(val));
       });
     })
@@ -33,6 +33,12 @@ export class ApiProvider {
     return this.http.post(this.url+"user/login",{email:email,password:password});
   }
 
+  checkin(qr,token){
+    let d = moment().format("HH:MM").toString();
+
+    return this.http.post(this.url+"api/checkin?qr="+qr+"&token="+token,{logtime:d});
+  }
+
   showalert(title, msg){
     let alert = this.alertCtrl.create({
       title: title,
@@ -40,7 +46,7 @@ export class ApiProvider {
       buttons: ['OK']
     });
     alert.present();
-  } 
+  }
 
   showLoading(title){
     let loader = this.loadingCtrl.create({

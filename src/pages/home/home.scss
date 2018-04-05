@@ -5,12 +5,19 @@ page-home {
 }
 
 .usercontainer{
-   
+
     padding:10px;
     text-align: center;
 }
 
 h3{
     text-transform: capitalize;
+}
+ion-content {
+  background: transparent !important;
+}
+
+.bg{
+  background: transparent !important;
 }
 }
