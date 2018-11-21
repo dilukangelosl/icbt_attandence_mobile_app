@@ -20,4 +20,33 @@ ion-content {
 .bg{
   background: transparent !important;
 }
+
+.checkin{
+    background: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.br{
+    border-right: 1px solid #1b1b1b;
+}
+.col{
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.green{
+    color:#2ecc71;
+}
+.red{
+    color:#e74c3c;
+}
+
+.coldate{
+    padding: 10px;
+    text-align: center;
+    font-size: 1.6em;
+    background: #2c3e50;
+    color: white;
+    font-weight: bold;
+}
 }

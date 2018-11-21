@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '@angular/common/http'; 
 import { QRScanner } from '@ionic-native/qr-scanner';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 @NgModule({
   declarations: [
     MyApp
@@ -32,6 +33,7 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     StatusBar,
     SplashScreen,
     QRScanner,
+    TextToSpeech,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider
   ]

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams ,ViewController} from 'ionic-angular';
+import {ApiProvider} from '../../providers/api/api';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -15,11 +15,42 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+name:any = "";
+phone:any = "";
+email:any = "";
+password:any = "";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl:ViewController, public api:ApiProvider) {
   }
 
+
+  register(name,phone,email,password){
+
+if(name == "" || phone == "" || email == "" || password == ""){
+  this.api.showalert("Failed","Required All Fields");
+
+}else{
+  let loader = this.api.showLoading("Please wait..");
+  loader.present();
+  this.api.register(name,phone,email,password).subscribe(r => {
+    console.log(r);
+    if(r["status"]){
+      this.api.showalert("Success",r["msg"]);
+      loader.dismiss();
+      this.viewCtrl.dismiss();
+    }else{
+      this.api.showalert("Failed",r["msg"]);
+    }
+
+  })
+}
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  dismiss(){
+    this.viewCtrl.dismiss();
   }
 
 }

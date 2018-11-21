@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, Modal } from 'ionic-angular';
 import {ApiProvider} from '../../providers/api/api';
 /**
  * Generated class for the LoginPage page.
@@ -16,7 +16,11 @@ import {ApiProvider} from '../../providers/api/api';
 export class LoginPage {
   email:String = "";
   password:String ="";
-  constructor(public navCtrl: NavController, public navParams: NavParams, public api:ApiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api:ApiProvider, public modalCtrl:ModalController) {
+  }
+
+  register(){
+    this.modalCtrl.create("RegisterPage").present();
   }
 
   ionViewDidLoad() {

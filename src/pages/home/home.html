@@ -20,15 +20,29 @@
 
     <button large ion-button full (click)="scan()">check IN/OUT</button>
 
-    <ion-card>
-      <ion-list>
-        <ion-item *ngFor="let item of data">
-          <h2>{{formatdate(item.logdate)}}</h2>
-          <h3>CHECK IN : {{item.checkin}}</h3>
-          <h3>CHECK OUT : {{item.checkout}}</h3>
-        </ion-item>
-      </ion-list>
-    </ion-card>
+ 
+
+    <ion-scroll scrollY="true" style="height:500px;">
+        <div class="checkin" *ngFor="let item of data">
+
+            <ion-row>
+                <div class="col br">
+                    <ion-icon name="clock" class="green"></ion-icon><br>
+                    {{item.checkin}}
+                </div>
+                <div class="col">
+                    <ion-icon name="clock" class="red"></ion-icon><br>
+                    {{item.checkout}}
+                </div>
+            </ion-row> 
+           
+            <div class="coldate">
+                {{formatdate(item.logdate)}}
+              </div>
+          </div>
+      
+      </ion-scroll>
+   
 
 
 </ion-content>

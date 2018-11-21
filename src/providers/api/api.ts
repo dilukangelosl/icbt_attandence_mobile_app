@@ -29,12 +29,15 @@ export class ApiProvider {
     })
   }
 
+  register(name,phone,email,password){
+    return this.http.post(this.url+"user/register",{email:email,password:password,name:name,phone:phone});
+  }
   login(email,password){
     return this.http.post(this.url+"user/login",{email:email,password:password});
   }
 
   checkin(qr,token){
-    let d = moment().format("HH:MM").toString();
+    let d = moment().format("HH:mm").toString();
 
     return this.http.post(this.url+"api/checkin?qr="+qr+"&token="+token,{logtime:d});
   }

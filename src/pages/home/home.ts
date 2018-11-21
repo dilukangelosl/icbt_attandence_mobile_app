@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ApiProvider} from '../../providers/api/api';
 import moment from 'moment';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 /**
  * Generated class for the HomePage page.
  *
@@ -19,7 +20,7 @@ export class HomePage {
   username:any = "";
   token:any = "";
   data:any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public api:ApiProvider,private qrScanner: QRScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api:ApiProvider,private qrScanner: QRScanner,private tts: TextToSpeech) {
     this.api.getStorage().then(r => {
       console.log(r);
       this.username = r["user"];
@@ -51,6 +52,7 @@ this.qrScanner.prepare()
           if(res["status"]){
             this.api.showalert("Success",res["msg"]);
             this.getcheckins();
+            this.speak("Thank you");
           }else{
             this.api.showalert("Failed",res["msg"]);
           }
@@ -86,6 +88,12 @@ this.qrScanner.prepare()
     this.navCtrl.setRoot("LoginPage");
   }
 
+
+  speak(text){
+    this.tts.speak(text)
+  .then(() => console.log('Success'))
+  .catch((reason: any) => console.log(reason));
+  }
   getcheckins(){
     this.api.getmyCheckings(this.token).subscribe(r => {
       console.log(r);
